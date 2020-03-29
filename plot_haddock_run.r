@@ -10,21 +10,22 @@ library(gclus)
 
 myvol=15000 #volume of common core, select after looking at core.png and then rerun
 
+
 data<-read.table('structures_haddock-sorted.stat', 
                  comment.char = '!', 
                  header=TRUE)
 
 data$X.struc[1]
 #HADDOCK PLOTS---------------
-
+#HADDOCK score vs rmsd, labels top10 structures by HADDOCK score
 p1<-ggplot(data, aes(rmsd_all, haddock.score,label=X.struc)) +
   geom_point()+
   ggtitle(getwd())+
   geom_text_repel(data= head(data))
-
+#interaction restraints vs rmsd
 p2<-ggplot(data, aes(rmsd_all, Eair))+
   geom_point()
-
+#interaction restraitns vs haddock score
 p3<-ggplot(data, aes(Eair, haddock.score, color=rmsd_all))+
   geom_point()
 
@@ -120,3 +121,12 @@ a <- mktrj.pca(pc.xray, pc=1, file="pc1.pdb",
 b <- mktrj.pca(pc.xray, pc=2, file="pc2.pdb",
                resno = pdbs$resno[1, gaps.res$f.inds],
                resid = aa123(pdbs$ali[1, gaps.res$f.inds]) )
+
+#PCA-based clustering
+
+hc <- hclust(dist(pc.xray$z[,1:2]))
+plot(hc)
+grps <- cutree(hc, h=400) #edit here to cut the tree at different points after seeing the plot 
+cols <- c("red", "green", "blue")[grps]
+plot(pc.xray, pc.axes=1:2, col=cols)
+
