@@ -8,8 +8,17 @@ library(parallel)
 library(gplots)
 library(gclus)
 
+#bio3d parameters
 myvol=15000 #volume of common core, select after looking at core.png and then rerun
 
+
+#remove previous run
+fn <- "pc1.pdb"
+if (file.exists(fn)) 
+  file.remove(fn)
+fn <- "pc2.pdb"
+if (file.exists(fn)) 
+  file.remove(fn)
 
 data<-read.table('structures_haddock-sorted.stat', 
                  comment.char = '!', 
