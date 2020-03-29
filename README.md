@@ -1,4 +1,3 @@
-# HADDOCK_report
 small scripts to generate reports in a HADDOCK directory (it0, it1, water).
 
 the script makes some of the standard HADDOCK plots, plus uses Bio3d (http://thegrantlab.org/bio3d/index.php) to generate some additional analysis (PCA and other plots), to make a "report" on the HADDOCK run.
@@ -11,28 +10,18 @@ All preprocessing is taken care of by
 
 ./preprocessing.sh
 
+This will renumber your structures. Original files are stored in directory_backup
+
 Then 
 
 Rscript plot_haddock_run.r
 
 Look at core.png and set an appropriate volume for the common core and then rerun, chaning the "myvol" parameter.
+Other editable things: use or not SVD in PCA; cut the tree differently in the PCA-based clustering.
 
+The Bio3d code is largely lifted from Bio3d tutorials.
 
-
-----------------
-
-
-Run after having generated .stat files by
-
-$HADDOCKTOOLS/ana_structures.csh
-
-(see http://www.bonvinlab.org/education/HADDOCK24/HADDOCK24-local-tutorial/ )
-
-
-
-All models need to have a single chain and unique residue numbering all the way through.
-Please use Joao's PDB tools to make sure this is the case
-https://github.com/JoaoRodrigues/pdb-tools
+---------------
 
 
 Please note that FCC-based clustering more suitable for the usual HADDOCK run than rmsd-based.
