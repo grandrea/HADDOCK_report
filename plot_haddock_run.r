@@ -36,7 +36,7 @@ p2<-ggplot(data, aes(rmsd_all, Eair))+
 p3<-ggplot(data, aes(Eair, haddock.score, color=rmsd_all))+
   geom_point()
 #total energy vs rmsd
-p4<-ggplot(data, aes(msd_all,Einter, color=rmsd_all))+
+p4<-ggplot(data, aes(rmsd_all,Einter, color=haddock.score, label=X.struc))+                    
   geom_point()+
   geom_text_repel(data= head(data))
 
