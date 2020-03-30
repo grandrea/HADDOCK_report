@@ -41,7 +41,7 @@ p4<-ggplot(data, aes(msd_all,Einter, color=rmsd_all))+
   geom_text_repel(data= head(data))
 
 
-grid.arrange(p1, p2, p3)
+grid.arrange(p1, p2, p3, p4)
 
 
 
