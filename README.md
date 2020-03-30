@@ -10,7 +10,7 @@ All preprocessing is taken care of by
 
 ./preprocessing.sh
 
-This will renumber your structures. Original files are stored in directory_backup
+This will renumber the residues in your structures. Original files are stored in directory_backup
 
 Then 
 
