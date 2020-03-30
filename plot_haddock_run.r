@@ -25,18 +25,18 @@ data<-read.table('structures_haddock-sorted.stat',
 data$X.struc[1]
 #HADDOCK PLOTS---------------
 #HADDOCK score vs rmsd, labels top10 structures by HADDOCK score
-p1<-ggplot(data, aes(rmsd_all, haddock.score,label=X.struc)) +
+p1<-ggplot(data, aes(rmsd_all, haddock.score,label=X.struc, color=X.NOEviol)) +
   geom_point()+
   ggtitle(getwd())+
   geom_text_repel(data= head(data))
 #interaction restraints vs rmsd
-p2<-ggplot(data, aes(rmsd_all, Eair))+
+p2<-ggplot(data, aes(rmsd_all, Eair, color=X.NOEviol))+
   geom_point()
 #interaction restraitns vs haddock score
 p3<-ggplot(data, aes(Eair, haddock.score, color=rmsd_all))+
   geom_point()
 #total energy vs rmsd
-p4<-ggplot(data, aes(rmsd_all,Einter, color=haddock.score, label=X.struc))+                    
+p4<-ggplot(data, aes(rmsd_all,Einter, label=X.struc))+                    
   geom_point()+
   geom_text_repel(data= head(data))
 
