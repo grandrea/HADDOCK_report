@@ -35,6 +35,10 @@ p2<-ggplot(data, aes(rmsd_all, Eair))+
 #interaction restraitns vs haddock score
 p3<-ggplot(data, aes(Eair, haddock.score, color=rmsd_all))+
   geom_point()
+#total energy vs rmsd
+p4<-ggplot(data, aes(msd_all,Einter, color=rmsd_all))+
+  geom_point()+
+  geom_text_repel(data= head(data))
 
 
 grid.arrange(p1, p2, p3)
